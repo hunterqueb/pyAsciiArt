@@ -1,6 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
+from PIL import Image
 import sys
 
 def rgb2gray(rgb):
@@ -17,10 +16,14 @@ ascii = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. 
 
 if __name__ == "__main__":
     imageName = sys.argv[1]
-    img = mpimg.imread(imageName)     
+    img = Image.open(imageName)
+    basewidth = 300
+    wpercent = (basewidth/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    # resize image and save
+    img = img.resize((basewidth,hsize), Image.ANTIALIAS)
+    img = np.array(img)
     gray = rgb2gray(img)    
-    # plt.imshow(gray, cmap = plt.get_cmap('gray'))
-    # plt.show()
 
     f = open("image.txt", "w")
 
