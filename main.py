@@ -16,8 +16,11 @@ ascii = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. 
 
 if __name__ == "__main__":
     imageName = sys.argv[1]
+    if len(sys.argv) > 2:
+        basewidth = int(sys.argv[2])
+    else:
+        basewidth = 300
     img = Image.open(imageName)
-    basewidth = 300
     wpercent = (basewidth/float(img.size[0]))
     hsize = int((float(img.size[1])*float(wpercent)))
     # resize image and save
