@@ -14,3 +14,7 @@ where NAME_OF_IMAGE is the total name of the image including the file extension,
 the final result is saved in a text file in the same directory as main.py
 
 an example converted image is provided.
+
+## Example
+
+![](example.png)
