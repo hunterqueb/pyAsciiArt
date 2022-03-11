@@ -12,7 +12,7 @@ def translate(value, inputMax, outputMax):
     # Convert the 0-1 range into a value in the right range.
     return int(valueScaled * outputMax)
 
-ascii = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. "[::-1]
+ascii = "@%#0*+=-;:'._ "[::-1]
 
 if __name__ == "__main__":
     # get args
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:
         basewidth = int(sys.argv[2])
     else:
-        basewidth = 300
+        basewidth = 150
     
     f = open("image.txt", "w")
 
