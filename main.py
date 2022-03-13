@@ -12,7 +12,7 @@ def translate(value, inputMax, outputMax):
     # Convert the 0-1 range into a value in the right range.
     return int(valueScaled * outputMax)
 
-ascii = "@%#0*+=-;:'._ "[::-1]
+ascii = "@%#0*+=-;:'._  "[::-1]
 
 if __name__ == "__main__":
     # get args
@@ -39,8 +39,6 @@ if __name__ == "__main__":
 
     NUM_ASCII_CHARS = len(ascii)
 
-    grayConverted = np.zeros_like(gray).astype(int)
-
     # translate the gray scale array to the translate gray scale so we can access the correct ascii character and then writes to file in same loop
     for i in range(len(gray[:,1])):
         # for every new line write to file new line character
@@ -48,10 +46,8 @@ if __name__ == "__main__":
         for j in range(len(gray[1,:])):
             # for every pixel in a horizontal line:
             # convert the gray scale pixel to an integer corresponding to the total ascii string
-            grayConverted = translate(gray[i,j],255,NUM_ASCII_CHARS)
-
-            string = ascii[grayConverted]
+            grayConvertedPixel = translate(gray[i,j],255,NUM_ASCII_CHARS)
             # then write the sting to the file
-            f.write(string + ' ')
+            f.write(ascii[grayConvertedPixel] + ' ')
 
     f.close()
